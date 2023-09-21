@@ -17,7 +17,9 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<slot /> 
+		<!-- -> Esto sería como el children, por ejemplo
+		el contenido de la página about sería lo que entra en este slot -->
 	</body>
 </html>
 <style is:global>
