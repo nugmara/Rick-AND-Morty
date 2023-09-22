@@ -2,14 +2,15 @@
 const baseUrl = "https://rickandmortyapi.com/api/character";
 let allCharacters = [];
 
+
 async function fetchAllCharacters(url) {
   try {
     const response = await fetch(url);
     const data = await response.json();
-
+    
     if (response.ok) {
       allCharacters = allCharacters.concat(data.results);
-
+      
       if (data.info.next) {
         // If there's a next page, recursively fetch the next page
         await fetchAllCharacters(data.info.next);
@@ -25,9 +26,11 @@ async function fetchAllCharacters(url) {
   }
 }
 
+
 fetchAllCharacters(baseUrl);
+
 ---
 
-<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-  <article></article>
+<div> 
+  {allCharacters.map((character => <h2>{character.name}</h2>))}
 </div>
