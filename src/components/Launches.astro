@@ -1,7 +1,9 @@
 ---
+
 const baseUrl = "https://rickandmortyapi.com/api/character";
 let allCharacters = [];
-
+let characterCount = 0;
+const maxCharacters = 12;
 
 async function fetchAllCharacters(url) {
   try {
@@ -10,13 +12,15 @@ async function fetchAllCharacters(url) {
     
     if (response.ok) {
       allCharacters = allCharacters.concat(data.results);
-      
-      if (data.info.next) {
-        // If there's a next page, recursively fetch the next page
+      characterCount += data.results.length;
+
+      if (characterCount < maxCharacters && data.info.next) {
+        // If there's a next page and we haven't reached the limit, recursively fetch the next page
         await fetchAllCharacters(data.info.next);
       } else {
-        // All characters have been fetched
-        console.log("All characters have been fetched:", allCharacters);
+        // Either we reached the limit or there are no more characters to fetch
+        const charactersJSON = JSON.stringify(allCharacters.slice(0, maxCharacters));
+        console.log("Characters fetched:", charactersJSON);
       }
     } else {
       console.error("Error fetching characters:", data.error);
@@ -25,7 +29,6 @@ async function fetchAllCharacters(url) {
     console.error("An error occurred:", error);
   }
 }
-
 
 fetchAllCharacters(baseUrl);
 
