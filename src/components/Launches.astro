@@ -1,4 +1,15 @@
 ---
+import { useState, type ReactDOM, useEffect } from "react";
+
+const Data = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    getData()
+  }, [])
+ 
+}
+
 const baseUrl = "https://rickandmortyapi.com/api/character";
 let allCharacters = [];
 
@@ -32,5 +43,4 @@ fetchAllCharacters(baseUrl);
 ---
 
 <div> 
-  {allCharacters.map((character => <h2>{character.name}</h2>))}
 </div>
