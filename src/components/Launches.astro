@@ -1,13 +1,18 @@
 ---
+import { createGetDataEntryById } from "astro/content/runtime";
 import { useState, type ReactDOM, useEffect } from "react";
+import axios from "axios";
 
 const Data = () => {
-  const [data, setData] = useState(null);
+  const [allCharacters, setAllcharacters] = useState([]);
 
   useEffect(() => {
     getData()
   }, [])
  
+  async function getData() {
+    await axios("https://rickandmortyapi.com/api/character")
+  }
 }
 
 const baseUrl = "https://rickandmortyapi.com/api/character";
