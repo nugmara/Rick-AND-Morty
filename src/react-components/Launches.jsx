@@ -39,6 +39,8 @@ const Data = () => {
   
 }
 
+export default Data
+
 // const baseUrl = "https://rickandmortyapi.com/api/character";
 // let allCharacters = [];
 
