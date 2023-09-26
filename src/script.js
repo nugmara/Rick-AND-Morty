@@ -26,12 +26,13 @@ const fetchAllCharacters = async (url) => {
 function renderCharacters() {
     const charactersList = document.getElementById("characters-list");
     allCharacters.forEach((character) => {
-        const listItem = document.createElement("li");
-        const characterName = document.createElement("span");
+        const listItem = document.createElement("article");
+        const characterName = document.createElement("p");
         const characterImage = document.createElement("img");
 
         // Set character name
         characterName.textContent = character.name
+        characterName.classList.add("text-lg", "font-bold", "text-white");
 
         // Set character image source
         characterImage.src = character.image
