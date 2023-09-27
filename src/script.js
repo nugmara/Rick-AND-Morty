@@ -43,6 +43,7 @@ function renderCharacters() {
 
         // Append the list item to the characters list
         charactersList.appendChild(listItem)
+        // charactersList.classList.add("hidden")
 
     })
 }
