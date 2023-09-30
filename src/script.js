@@ -27,14 +27,14 @@ function renderCharacters() {
     const charactersList = document.getElementById("characters-list");
     allCharacters.forEach((character) => {
         const listItem = document.createElement("article");
-        listItem.classList.add("character-card", "bg-zinc-800", "rounded-lg", "shadow-lg", "w-full", "md:w-1/2", "lg:w-1/3");
+        listItem.classList.add("character-card", "md:flex", "bg-zinc-800", "rounded-lg", "shadow-lg", "w-full", "md:w-1/2", "lg:w-1/3");
 
         // Create a div for the character image
         const characterImage = document.createElement("div");
-        characterImage.classList.add("character-image", "w-1/3"); // Tailwind CSS classes for styling
+        characterImage.classList.add("character-image", "md:shrink-0"); // Tailwind CSS classes for styling
         const imageElement = document.createElement("img");
         imageElement.src = character.image;
-        imageElement.classList.add("w-full", "h-auto");
+        imageElement.classList.add("h-48", "w-full", "object-cover", "md:h-full", "md:w-48");
         characterImage.appendChild(imageElement);
 
         // Create a div for character information
@@ -67,7 +67,7 @@ function renderCharacters() {
 
         // Append the list item to the characters list
         charactersList.appendChild(listItem);
-        charactersList.classList.add("flex");
+        charactersList.classList.add("max-w-md", "mx-auto", "bg-white", "rounded-xl", "shadow-md", "overflow-hidden", "md:max-w-2xl");
     });
 }
 
